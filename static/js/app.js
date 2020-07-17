@@ -57,7 +57,7 @@ function buildCharts(sampleId) {
     
     // Aesthetics
     var bubbleOptions = {
-      margin: { t: 20, l: 300 },
+      margin: { t: 20, l: 400 },
       height: 600, 
       title: 'Bacteria Cultures per Sample',
       hovermode: 'closest',
@@ -102,7 +102,7 @@ function buildMetaData(sampleId) {
   d3.json('samples.json').then(data => {
     
     // Given the sampleId, use find to get the object that matches the id
-    var userdata = data.samples.find(obj => obj.id === sampleId)
+    var userdata = data.samples.filter(obj => obj.id === sampleId)
     var user = userdata[0];
 
     // D3 to select `#sample-metadata`
