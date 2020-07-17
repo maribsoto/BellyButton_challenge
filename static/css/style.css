@@ -1,0 +1,29 @@
+h1 {
+    color: #041c33;;
+    font-size: 36px;
+    font-weight: 550;
+}
+
+h3 {
+    color: #041c33;;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+p1 {
+    color: #041c33;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+p {
+    font-size: 10px;
+    word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#sample-metadata{
+    word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+}
