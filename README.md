@@ -9,6 +9,9 @@ Build an interactive dashboard to explore the Belly Button Biodiversity dataset,
 The dataset reveals that a small handful of microbial species were present in more than 70% of people
 You can check the Top 10 Bacteria Cultures and its samples distribution, while getting demographic information on each sample!
 
+## Bonus
+There is a very good attempt to get the Gauge working but the pointer is not displaying correctly
+
 ### Data source
 Hulcr, J. et al.(2012) A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable
 * http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/
