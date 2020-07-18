@@ -11,22 +11,22 @@ You can check the Top 10 Bacteria Cultures and its samples distribution, while g
 
 ### Screenshots from findings
 
-![bacteria_samples.png](images/bacteria_samples.png)
-
 ![dropdown_demoinfo.png](images/dropdown_demoinfo.png)
 
 ![top10_BarPlot.png](images/top10_BarPlot.png)
+
+![bacteria_samples.png](images/bacteria_samples.png)
 
 ### Data source
 Hulcr, J. et al.(2012) A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable
 * http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/
 
 ## Bonus
-There is a very good attempt to get the Gauge working but the pointer is not displaying correctly
+Check the gauge meter that plots the weekly washing frequency of each individual
 
 ![gauge_meter.png](images/gauge_meter.png)
 
-### The Dashboard
+### The Interactive Dashboard 
 ![dashboard](images/dashboard.png)
 
 ### Checkout the GitHub Page!
