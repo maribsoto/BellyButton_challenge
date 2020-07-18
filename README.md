@@ -6,7 +6,7 @@
 Build an interactive dashboard to explore the Belly Button Biodiversity dataset, which catalogs the microbes that colonize human navels.
 
 ## Interactive Dashboard Use
-The dataset reveals that a small handful of microbial species were present in more than 70% of people
+The dataset reveals that a small handful of microbial species were present in more than 70% of people.
 You can check the Top 10 Bacteria Cultures and its samples distribution, while getting demographic information on each sample!
 
 ### Screenshots from findings
