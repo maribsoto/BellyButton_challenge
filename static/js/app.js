@@ -130,6 +130,9 @@ function buildMetaData(sampleId) {
   });
 }
 
+
+/////     BONUS       //////
+
 // Build Gauge Chart
 
 function buildGauge(wfreq) {
