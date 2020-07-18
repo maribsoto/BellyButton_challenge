@@ -101,7 +101,7 @@ function init() {
   })
 }
 
-// Building the Metadata Panel
+// Build Metadata Panel
 
 function buildMetaData(sampleId) {
 
@@ -109,21 +109,21 @@ function buildMetaData(sampleId) {
   d3.json('samples.json').then(data => {
 
     // Given the sampleId, use find to get the object that matches the id
-    var userdata = data.samples.filter(obj => obj.id == sampleId)
+    var userdata = data.metadata.filter(obj1 => obj1.id == sampleId)
     var user = userdata[0];
 
     // D3 to select `#sample-metadata`
-    var metadata = d3.select('#sample-metadata');
+    var demo = d3.select('#sample-metadata');
 
     // HTML to clear any existing metadata
-    metadata.html("")
+    demo.html("")
 
     // Use `Object.entries` to add each key and value pair to the panel
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(user).forEach(([key, value]) => {
 
-      metadata
+      demo
         .append('panel-body')
         .text(`${key.toUpperCase()}: ${value} \n`);
     })
