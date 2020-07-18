@@ -27,7 +27,7 @@ There is a very good attempt to get the Gauge working but the pointer is not dis
 ![gauge_meter.png](images/gauge_meter.png)
 
 ### The Dashboard
-![dashboard](images/gauge_meter.png)
+![dashboard](images/dashboard.png)
 
 ### Checkout the GitHub Page!
 * https://maribsoto.github.io/BellyButton_challenge/
