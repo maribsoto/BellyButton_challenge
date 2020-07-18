@@ -4,7 +4,7 @@ function buildCharts(sampleId) {
   d3.json('samples.json').then(data => {
     // Given the sampleId, use find to get the object that matches the id
     var user = data.samples.find(obj => obj.id === sampleId)
-    
+
     // Variable definitions for the Charts 
 
     // x values - sample values
@@ -21,7 +21,8 @@ function buildCharts(sampleId) {
     // Build Bar Chart
 
     var barTrace = [
-      { x: xVals,
+      {
+        x: xVals,
         y: yVals,
         text: hovers,
         type: 'bar',
@@ -29,7 +30,7 @@ function buildCharts(sampleId) {
         marker: {
           color: 'green',
           opacity: 0.7
-        }  
+        }
       }
     ];
 
@@ -37,11 +38,11 @@ function buildCharts(sampleId) {
     var barOptions = {
       width: 800,
       height: 600,
-      margin: { t: 200, l: 10, r:10},
+      margin: { t: 200, l: 10, r: 10 },
       title: 'Top 10 Bacteria Cultures Found',
-      titlefont:{ size: 28 },
+      titlefont: { size: 28 },
       font: { size: 16 },
-      margin: { t: 60, l:80 },
+      margin: { t: 60, l: 80 },
       bargap: 0.25
     };
     Plotly.newPlot('bar', barTrace, barOptions)
@@ -60,20 +61,20 @@ function buildCharts(sampleId) {
         }
       }
     ];
-    
+
     // Aesthetics
     var bubbleOptions = {
       margin: { t: 20, l: 400 },
-      height: 600, 
+      height: 600,
       title: 'Bacteria Cultures per Sample',
       hovermode: 'closest',
-      titlefont:{ size: 28 },
+      titlefont: { size: 28 },
       font: { size: 15 },
       xaxis: { title: 'OTU ID' },
       yaxis: { title: 'OTU Samples' },
       margin: { t: 60 }
-    };  
-    
+    };
+
     Plotly.newPlot('bubble', bubbleTrace, bubbleOptions)
 
   })
@@ -86,9 +87,9 @@ function init() {
   d3.json('samples.json').then(data => {
     var option = d3
 
-    // selecting reference to the dropdown menu
+      // selecting reference to the dropdown menu
 
-      .select('#selDataset') 
+      .select('#selDataset')
       .selectAll('option')
       .data(data.samples)
       .enter()
@@ -106,33 +107,128 @@ function buildMetaData(sampleId) {
 
   // Fetching a sample of the metadata through D3.JSON
   d3.json('samples.json').then(data => {
-    
+
     // Given the sampleId, use find to get the object that matches the id
-    var userdata = data.samples.filter(obj => obj.id === sampleId)
+    var userdata = data.samples.filter(obj => obj.id == sampleId)
     var user = userdata[0];
 
     // D3 to select `#sample-metadata`
     var metadata = d3.select('#sample-metadata');
-  
+
     // HTML to clear any existing metadata
     metadata.html("")
-  
+
     // Use `Object.entries` to add each key and value pair to the panel
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
     Object.entries(user).forEach(([key, value]) => {
 
       metadata
-      .append('panel-body')
-      .text(`${key.toUpperCase()}: ${value} \n`);
-  })
+        .append('panel-body')
+        .text(`${key.toUpperCase()}: ${value} \n`);
+    })
   });
-  }
+}
+
+// Build Gauge Chart
+
+function buildGauge(wfreq) {
   
+  // Trigonometry to compute meter point
+  var level = parseFloat(wfreq) * 20;
+  var degrees = 180 - level, radius = .5;
+  var radians = (degrees * Math.PI) / 180;
+  var x = radius * Math.cos(radians);
+  var y = radius * Math.sin(radians);
+
+  // Path
+  var mainPath = 'M -.0 -0.035 L .0 0.035 L ';
+  var pathX = String(x);
+  var space = ' ';
+  var pathY = String(y);
+  var pathEnd = ' Z';
+  var path = mainPath.concat(pathX, space, pathY, pathEnd);
+
+  var gaugeData = [{
+    type: 'scatter',
+    x: [0],
+    y: [0],
+    marker: { size: 24, color: 'grey' },
+    showlegend: false,
+    name: 'Freq indicator',
+    text: level,
+    hoverinfo: 'text+name'
+  },
+  {
+    values: [50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50 / 9, 50],
+    rotation: 90,
+    text: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+    textinfo: 'text',
+    textposition: 'inside',
+    marker: {
+      colors: [
+        'rgba(119, 170, 221, .5)',
+        'rgba(153, 221, 255, .5)',
+        'rgba(68, 187, 153, .5)',
+        'rgba(187, 204, 51, .5)',
+        'rgba(170, 170, 0, .5)',
+        'rgba(238, 221, 136, .5)',
+        'rgba(238, 136, 102, .5)',
+        'rgba(255, 170, 187, .5)',
+        'rgba(221, 221, 221, .5)',
+        'rgba(255, 255, 255, 0)'
+      ]
+    },
+    labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '1-2', '0-1', ''],
+    hoverinfo: 'label',
+    hole: .5,
+    type: 'pie',
+    showlegend: false
+  }];
+
+  // Layout object
+
+  var gaugeLayout = {
+    shapes: [{
+      type: 'path',
+      path: path,
+      fillcolor: '850000',
+      line: {
+        color: '850000',
+      }
+    }
+    ],
+    title: 'Belly Button Washing Frequency per Week',
+    height: 800,
+    width: 800,
+    xaxis: { 
+      type: 'category', 
+      zeroline: false, 
+      showticklabels: false,
+      showgrid: false, 
+      range: [-1, 1]
+    },
+    yaxis: {
+      type: 'category', 
+      zeroline: false, 
+      showticklabels: false,
+      showgrid: false, 
+      range: [-1, 1]
+    },
+    titlefont: { size: 28 },
+    font: { size: 15 },
+  };
+
+  // Plot
+  Plotly.newPlot('gauge', gaugeData, gaugeLayout)
+
+}
+
 // Fetching new data each time a new sample is selected
 function optionChanged(newSampleId) {
   buildCharts(newSampleId);
   buildMetaData(newSampleId);
+  buildGauge(newSampleId);
 }
 
 // Initialize the dashboard
