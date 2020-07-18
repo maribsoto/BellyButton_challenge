@@ -21,22 +21,28 @@ function buildCharts(sampleId) {
     // Build Bar Chart
 
     var barTrace = [
-      {
-        x: xVals,
+      { x: xVals,
         y: yVals,
         text: hovers,
         type: 'bar',
-        orientation: 'h'
+        orientation: 'h',
+        marker: {
+          color: 'green',
+          opacity: 0.7
+        }  
       }
     ];
 
     // Aesthetics
     var barOptions = {
-      margin: { t: 100, l: 150 },
+      width: 800,
+      height: 600,
+      margin: { t: 200, l: 10, r:10},
       title: 'Top 10 Bacteria Cultures Found',
       titlefont:{ size: 28 },
       font: { size: 16 },
-      margin: { t: 60 }
+      margin: { t: 60, l:80 },
+      bargap: 0.25
     };
     Plotly.newPlot('bar', barTrace, barOptions)
 
