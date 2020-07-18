@@ -13,7 +13,7 @@ You can check the Top 10 Bacteria Cultures and its samples distribution, while g
 Hulcr, J. et al.(2012) A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable
 * http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/
 
-### Screenshots from our findings
+### Screenshots from findings
 ![bacteria_samples.png](images/bacteria_samples.png)
 
 ![dropdown_demoinfo.png](images/dropdown_demoinfo.png)
